@@ -13,7 +13,7 @@ const Signup = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-    if (!regexp.test(password)) {
+    if (regexp.test(password)) {
       setError(
         "Password must contain at least 8 characters, including 1 uppercase letter, 1 lowercase letter, and 1 special character."
       );
@@ -24,7 +24,6 @@ const Signup = () => {
       .catch((err) => {
         console.log(err.message);
         setError(err.message);
-        return;
       });
   };
   if (user) {

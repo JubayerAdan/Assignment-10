@@ -49,7 +49,17 @@ const Header = () => {
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
             <li>
-              <a>Item 1</a>
+              <Link to="/" className="text-lg font-normal">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/recipes" className="text-lg">
+                Recipes
+              </Link>
+            </li>
+            <li>
+              <Link className="text-lg">Blogs</Link>
             </li>
           </ul>
         </div>
@@ -63,7 +73,9 @@ const Header = () => {
             </Link>
           </li>
           <li>
-            <Link className="text-lg">Recipes</Link>
+            <Link to="/recipes" className="text-lg">
+              Recipes
+            </Link>
           </li>
           <li>
             <Link className="text-lg">Blogs</Link>

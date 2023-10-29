@@ -1,7 +1,9 @@
 import React from "react";
 import { FaThumbsUp } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 const Card = ({ card }) => {
-  const { img, Name, experience, Recipes, Likes } = card;
+  const { id, img, Name, experience, Recipes, Likes } = card;
+  const navigate = useNavigate();
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -19,7 +21,12 @@ const Card = ({ card }) => {
         </div>
 
         <div className="card-actions justify-end">
-          <button className="btn btn-primary">Learn More</button>
+          <button
+            onClick={() => navigate(`/chef/${id}`)}
+            className="btn btn-primary"
+          >
+            View Recipes
+          </button>
         </div>
       </div>
     </div>

@@ -1,12 +1,15 @@
 import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Firebase/AuthProvider";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [error, setError] = useState("");
 
   const { user, signIn, googleMethod, githubMethod, facebookMethod } =
     useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+  const navigate = useNavigate();
   const handleLogin = (e) => {
     e.preventDefault();
     setError("");
@@ -15,7 +18,7 @@ const Login = () => {
     const password = form.password.value;
     signIn(email, password)
       .then(() => {
-        return <Navigate to="/" />;
+        return navigate(from, { replace: true });
       })
       .catch((err) => {
         console.log(err.message);
